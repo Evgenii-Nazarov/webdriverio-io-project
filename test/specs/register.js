@@ -1,70 +1,90 @@
-const assert = require('assert');
 const {expect} = require ('chai');
 
-describe('register page', () => {
+const firstName = 'Zhenia';
+const lastName = 'Nazarov';
+const phone = '33434343433';
+const email = Math.random() +'test1@test.com';
+const password = 'tester';
+const about = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur congue enim nec imperdiet egestas. Ut egestas mauris mi, vel dictum neque auctor ac. Donec nec sapien nibh. Etiam commodo urna at sapien molestie, non egestas purus vulputate. Donec vel pellentesque metus. Donec vulputate nibh sit amet dignissim blandit. Sed bibendum.';
+const goals = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
-    it('should have the right title', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const actualTitle = browser.getTitle()
-        const expectedTitle = 'Progress Monitor'
-        expect(actualTitle).equal(expectedTitle )
-    })
+describe('register new user', () => {
 
-    it('should have a correct title', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const actuallh1text  = $('h1').getText();
-        const expectedH1Text  = 'User Register';
-        expect(actuallh1text).equal(expectedH1Text)
-    })
+  it('should fill First name field', () => {
+    browser.url('https://stage.pasv.us/user/register');
+    const element  = $('form input[name="firstName"]');
+    element.addValue(firstName);
+  });
 
-    it('should have a correct description', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const actual  = $('p').getText();
-        const expected  = 'Profiles with fictitious or dummy data will be deleted.';
-        expect(actual).equal(expected)
-    })
+  it('should fill Last name field', () => {
+    const element  = $('form input[name="lastName"]');
+    element.addValue(lastName);
+  });
 
-    it('should have a correct submit text', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const actual  = $('form button').getText();
-        const expected  = 'Submit';
-        expect(actual).equal(expected)
-    })
+  it('should fill Phone field', () => {
+    const element  = $('form input[name="phone"]');
+    element.addValue(phone);
+  });
 
-    it('should fill First name field', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const element  = $('form input[name="firstName"]');
-        element.setValue("Zhenia");
-    })
+  it('should fill Email field', () => {
+    const element  = $('form input[name="email"]');
+    element.setValue(email);
+  });
 
-    it('should fill Last name field', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const element  = $('form input[name="lastName"]');
-        element.setValue("Nazarov");
-        const expected  = 'Submit';
-    })
+  it('should fill Password field', () => {
+    const element  = $('form input[name="password"]');
+    element.addValue(password);
+  });
 
-    it('should fill Phone field', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const element  = $('form input[name="phone"]');
-        element.setValue("17775551122 ");
-    })
+  it('should fill About field', () => {
+    const element  = $('form textarea[name="about"]');
+    element.addValue(about);
+  });
 
-    it('should fill select box', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const element  = $('form select[name="englishLevel"]');
-        element.selectByVisibleText('Native')
-    })
+  it('should fill Goals box', () => {
+    const element  = $('form textarea[name="goals"]');
+    element.addValue(goals);
+  });
 
-    it('should click the button', () => {
-        browser.url('https://stage.pasv.us/user/register')
-        const element  = $('form button[type="submit"]');
-        element.click();
-    })
+  it('should fill select box', () => {
+    const element  = $('form select[name="englishLevel"]');
+    element.selectByVisibleText('Zero');
+  });
 
+  it('should click the button', () => {
+    const element  = $('form button[type="submit"]');
+    element.click();
+    browser.pause(2000);
+  });
 
-        browser.pause(3000)
-})
+  // LOGIN PAGE
+
+  it('should fill Email field', () => {
+    const element  = $('form input[name="email"]');
+    element.setValue(email);
+  });
+
+  it('should fill Password field', () => {
+    const element  = $('form input[name="password"]');
+    element.addValue(password);
+  });
+
+  it('should click the button', () => {
+    const element  = $('form button[type="submit"]');
+    element.click();
+    browser.pause(2000);
+  });
+
+  // PROFILE PAGE
+
+  it('should have the right title', () => {
+    const actualTitle = $('h1').getText();
+    const expectedTitle = 'You are a new user';
+    expect(actualTitle).equal(expectedTitle );
+
+  });
+
+});
 
 
 
