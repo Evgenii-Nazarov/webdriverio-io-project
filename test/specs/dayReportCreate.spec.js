@@ -10,4 +10,10 @@ describe('Login as Admin', () => {
     $('form button[type="submit"]').click();
     browser.pause(500);
   });
+
+  it('should click the button', () => {
+    const element  = $('a [qa="courses-link"]');
+    element.click();
+    browser.pause(2000);
+  });
 });
