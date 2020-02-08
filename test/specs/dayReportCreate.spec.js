@@ -12,8 +12,13 @@ describe('Login as Admin', () => {
   });
 
   it('should click the button', () => {
-    const element  = $('a [qa="courses-link"]');
+    const element  = $('ul[qa="courses-link"]');
     element.click();
     browser.pause(2000);
   });
+
+  it ('peremennaya "nun" zadana verno ',()=>{
+    expect(num).a('number');
+  });
+
 });
